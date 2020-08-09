@@ -1,0 +1,30 @@
+{
+  "name": "team-profile-generator",
+  "version": "1.0.0",
+  "description": "Team Profile Generator",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mlportu/team-profile-generator.git"
+  },
+  "keywords": [
+    "Team",
+    "Profile",
+    "Generator"
+  ],
+  "author": "Mike Portu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mlportu/team-profile-generator/issues"
+  },
+  "homepage": "https://github.com/mlportu/team-profile-generator#readme",
+  "devDependencies": {
+    "jest": "^26.2.2"
+  },
+  "dependencies": {
+    "inquirer": "^7.3.3"
+  }
+}
