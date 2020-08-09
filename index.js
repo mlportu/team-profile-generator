@@ -3,13 +3,9 @@ const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern')
 
-function developTeam (){
-    this.manager;
-    this.egineer;
-    this.intern;
-}
-developTeam.prototype.managerInfo = function(){
-    inquirer.prompt([
+
+const managerInfo = () => {
+    return inquirer.prompt([
         {
             type:'input',
             name:'name',
@@ -61,9 +57,113 @@ developTeam.prototype.managerInfo = function(){
                     return false;
                 }
             }
-        } 
+        }
     ])
 }
 
+const buildTeam = () => {
+    return inquirer.prompt(
+        {
+            type:'list',
+            message:"What is type of employee would you like to add?",
+            name:'selectEmployee',
+            choices: ['Engineer', 'Intern', 'I dont want to add any more team'],
+            validate: selEmp =>{
+                if(selEmp){
+                    return true;
+                } else {
+                    console.log("Please select an employee to add to the team");
+                    return false;
+                }
+            }
+        })
+    .then(({selectEmployee}) => {
+        if(selectEmployee === 'Engineer'){
+            inquirer.prompt(
+                {
+                    type:'input',
+                    name:'id',
+                    message:"What is your team manager's id?",
+                    validate: idInput =>{
+                        if(idInput){
+                            return true;
+                        } else {
+                            console.log("Please enter your mangaer's id");
+                            return false;
+                        }
+                    }
+                },
+                {
+                    type:'input',
+                    name:'email',
+                    message:"What is your team manager's email?",
+                    validate: idInput =>{
+                        if(idInput){
+                            return true;
+                        } else {
+                            console.log("Please enter your mangaer's email");
+                            return false;
+                        }
+                    }
+                },
+                {
+                    type: 'input',
+                    name: 'github',
+                    message:'What is their Github account name?',
+                    validate: github =>{
+                        if(github){
+                            return true;
+                        } else {
+                            console.log("Please enter this engineer's github account name");
+                            return false;
+                        }
+                    }
+                })
+        } else if(selectEmployee === 'Intern'){
+            inquirer.prompt(
+                {
+                    type:'input',
+                    name:'id',
+                    message:"What is your team manager's id?",
+                    validate: idInput =>{
+                        if(idInput){
+                            return true;
+                        } else {
+                            console.log("Please enter your mangaer's id");
+                            return false;
+                        }
+                    }
+                },
+                {
+                    type:'input',
+                    name:'email',
+                    message:"What is your team manager's email?",
+                    validate: idInput =>{
+                        if(idInput){
+                            return true;
+                        } else {
+                            console.log("Please enter your mangaer's email");
+                            return false;
+                        }
+                    }
+                },
+                {
+                type: 'input',
+                name: 'school',
+                message: 'What school does this intern attend?',
+                validate: school =>{
+                    if(school){
+                        return true;
+                    } else {
+                        console.log("Please enter this inter's school");
+                        return false;
+                    }
+                }
+            })
+        }
+    })
+}
 
-developTeam();
+
+managerInfo()
+    .then(buildTeam)
