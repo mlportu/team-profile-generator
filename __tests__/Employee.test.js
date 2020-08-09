@@ -8,7 +8,7 @@ test('creates an employee object', () =>{
     expect(employee.email).toEqual(expect.stringContaining(employee.email.toString()));
 });
 
-test('gests employee name', () =>{
+test('gets employee name', () =>{
     const employee = new Employee('Name');
 
     expect(employee.getName()).toEqual(expect.stringContaining(employee.name));
