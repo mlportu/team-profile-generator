@@ -64,9 +64,8 @@ Team.prototype.managerInfo = function(){
             }
         }
     ])
-    .then(({name}) => {
-        this.manager = new Manager(name);
-
+    .then(({name, id, email, officeNumber}) => {
+        this.manager = new Manager(name)
         this.buildTeam();
     })
 }
@@ -208,7 +207,7 @@ Team.prototype.internInfo = function(){
     ])
     .then(({name}) => {
         this.intern = new Intern(name);
-        
+       
         this.buildTeam();
     })
 }
